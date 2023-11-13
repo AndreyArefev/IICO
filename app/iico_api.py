@@ -2,7 +2,10 @@ from pyiikocloudapi import IikoTransport
 import json
 from app.models import Product, Category, Modifier
 from django.core.exceptions import ObjectDoesNotExist
+from ..settings import api_login
 
+
+load_dotenv()
 
 class Iico_API:
     '''Класс для работы с API IICO'''
