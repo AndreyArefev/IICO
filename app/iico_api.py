@@ -2,19 +2,16 @@ from pyiikocloudapi import IikoTransport
 import json
 from app.models import Product, Category, Modifier
 from django.core.exceptions import ObjectDoesNotExist
-from ..settings import api_login
+from valentino.settings import api_login
 
-
-load_dotenv()
 
 class Iico_API:
     '''Класс для работы с API IICO'''
-    api_login = 'f552c7d2-22e'
-    api = IikoTransport(api_login)
+    api = IikoTransport(api_login=api_login, return_dict=True)
+    
 
     def __init__(self):
         self.menu = Iico_API.api.nomenclature('16a798f1-410a-4a66-a9cd-d9c6cea4457c')
-
         self.list_categories = [category for category in self.menu['productCategories']]
         self.dict_category_id = {category['id']: category['name'] for category in self.list_categories}
         self.list_products = [product for product in self.menu['products']]

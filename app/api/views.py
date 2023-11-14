@@ -2,9 +2,9 @@ from rest_framework import generics
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from ..models import Category
-from .serializers import CategorySerializer
-from ..iico_api import Iico_API
+from app.models import Category
+from app.api.serializers import CategorySerializer
+from app.iico_api import Iico_API
 from rest_framework.renderers import JSONRenderer, BrowsableAPIRenderer
 
 class SubjectListView(generics.ListAPIView):

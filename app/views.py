@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from .models import Product, Category, Modifier
+from app.models import Product, Category, Modifier
 
 
 def product_list(request, category_slug=None):
