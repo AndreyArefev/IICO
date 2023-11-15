@@ -1,5 +1,5 @@
 from django.db import models
-from shop.models import Product
+from shop.models import Product, Modifier
 
 class Order(models.Model):
     first_name = models.CharField(max_length=50)
@@ -30,6 +30,9 @@ class OrderItem(models.Model):
                               on_delete=models.CASCADE)
     product = models.ForeignKey(Product,
                                 related_name='order_items',
+                                on_delete=models.CASCADE)
+    modifier = models.ForeignKey(Modifier,
+                                related_name='product_modifier',
                                 on_delete=models.CASCADE)
     price = models.DecimalField(max_digits=10,
                                 decimal_places=2)
