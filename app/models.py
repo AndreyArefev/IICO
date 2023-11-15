@@ -27,7 +27,7 @@ class Category(m.Model):
     
     def get_absolute_url(self):
         return reverse('valentino_app:product_list_by_category',
-                        args=[self.slug]))
+                        args=[self.slug])
 
 
 class Product(m.Model):
@@ -69,7 +69,7 @@ class Product(m.Model):
 
     def get_absolute_url(self):
         return reverse('valentino_app:product_detail',
-                        args=[self.slug, self.pk]))
+                        args=[self.slug, self.pk])
 
 
 class Modifier(m.Model):
