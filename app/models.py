@@ -1,5 +1,6 @@
 from django.db import models as m
 from pytils.translit import slugify
+from django.urls import reverse
 
 
 class Category(m.Model):
@@ -23,6 +24,10 @@ class Category(m.Model):
             self.slug = slugify(self.name)
             print(self.slug)
         super().save(*args, **kwargs)
+    
+    def get_absolute_url(self):
+        return reverse('valentino_app:product_list_by_category',
+                        args=[self.slug]))
 
 
 class Product(m.Model):
@@ -62,6 +67,10 @@ class Product(m.Model):
             print(self.slug)
         super().save(*args, **kwargs)
 
+    def get_absolute_url(self):
+        return reverse('valentino_app:product_detail',
+                        args=[self.slug, self.pk]))
+
 
 class Modifier(m.Model):
     iico_id = m.CharField(max_length=1000, null=True, unique=True)
@@ -74,4 +83,5 @@ class Modifier(m.Model):
         verbose_name_plural = 'modifiers'
 
     objects = m.Manager()
+
 
